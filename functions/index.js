@@ -1,3 +1,4 @@
+import functions from 'firebase-functions';
 import express from 'express';
 import cors from 'cors';
 import { getAllRestaurants, getRestaurantById, deleteRestaurant,
@@ -14,6 +15,5 @@ app.delete('/restaurants/:restaurantId', deleteRestaurant);
 app.patch('/restaurants/:restaurantId', updateRestaurant);
 app.post('/restaurants', addRestaurant);
 
-app.listen(3000, () => {
-  console.log('listening on port 3000');
-});
+// the function in the firebase.json
+export const api = functions.https.onRequest(app)
